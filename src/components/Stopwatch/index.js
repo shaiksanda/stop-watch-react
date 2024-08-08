@@ -22,17 +22,14 @@ class StopWatch extends Component {
   }
 
   tick = () => {
-    const {timer} = this.state
-    this.setState({
-      timer: parseInt(timer) + 1,
-    })
+    this.setState(prevState => ({timer: prevState.timer + 1}))
   }
 
   handleStart = () => {
     const {intervalId} = this.state
     if (!intervalId) {
       // Only start if no interval is running
-      const newIntervalId = setInterval(this.tick, 1)
+      const newIntervalId = setInterval(this.tick, 1000)
       this.setState({intervalId: newIntervalId})
     }
   }
@@ -53,7 +50,7 @@ class StopWatch extends Component {
   render() {
     return (
       <div className="bg-container">
-        <h1 className="stop-watch">Stop Watch</h1>
+        <h1 className="stop-watch">Stopwatch</h1>
         <div className="timer-card">
           <div className="image-container">
             <img
@@ -90,7 +87,7 @@ class StopWatch extends Component {
         </div>
         <img
           src="https://assets.ccbp.in/frontend/react-js/stopwatch-lg-bg.png"
-          alt="stopwatch"
+          alt="stop watch"
           className="image"
         />
       </div>
